@@ -581,7 +581,9 @@ class XmlNode
 		// make sure we found our closing tag
 		// this is where we can get sloppy for stream parsing
 		// throw a missing closing tag exception
-		if (!ret) throw new XmlError("Missing end tag for "~name);
+		version(FORGIVING){} else{
+			if (!ret) throw new XmlError("Missing end tag for "~name);
+		}
 	}
 
 	// returns everything after the first node TREE (a node can be text as well)
